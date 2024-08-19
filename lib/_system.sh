@@ -133,7 +133,8 @@ system_copy_izing() {
   sleep 2
 
 sudo su - root <<EOF
-  cp "${PROJECT_ROOT}"/izing.zip /home/deploy/${instancia_add}/
+  cp "${PROJECT_ROOT}"/izing.zip /home/deploy/${instancia_add}
+  chmod -R 777 /home/deploy/${instancia_add}
 EOF
 
 #   sudo su - deploy <<EOF
@@ -161,6 +162,7 @@ system_unzip_izing() {
 
   sudo su - deploy <<EOF
   unzip /home/deploy/${instancia_add}/izing.zip -d /home/deploy/${instancia_add}
+  chmod -R 777 /home/deploy/${instancia_add}
 EOF
 
   sleep
