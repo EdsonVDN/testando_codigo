@@ -15,7 +15,7 @@ system_create_user() {
   sleep 2
 
   sudo su - root <<EOF
-  useradd -m -p $(openssl passwd $deploy_password) -s /bin/bash -G sudo deploy
+  adduser -m -p $(openssl passwd $deploy_password) -s /bin/bash -G sudo deploy
   usermod -aG sudo deploy
 EOF
 
@@ -125,15 +125,15 @@ EOF
 # Arguments:
 #   None
 #######################################
-system_unzip_izing() {
+system_copy_izing() {
   print_banner
-  printf "${WHITE} 💻 Fazendo unzip izing...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Transferindo izing para Deploy...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
 sudo su - root <<EOF
-  cp "${PROJECT_ROOT}"/izing.zip /home/deploy/
+  cp "${PROJECT_ROOT}"/izing.zip /home/deploy/${instancia_add}/
 EOF
 
 #   sudo su - deploy <<EOF
@@ -146,28 +146,49 @@ EOF
 
   sleep 2
 }
-#---------------------------------------------------------------------------------------------------------------
-verificar_senha() {
+
+#######################################
+# unzip whaticket
+# Arguments:
+#   None
+#######################################
+system_unzip_izing() {
   print_banner
-  printf "${WHITE} 💻 Verificando usuario e senha...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Fazendo unzip izing...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
-  sudo su - root <<EOF
-  rm teste.txt > /dev/null
-  wget -q --user ${username_down} --password ${senha_down} https://a.infomeurer.com.br/nova/teste.txt
-  
-if [ ! -f teste.txt ]; then
-    echo -e "\033[1;31mSerá que sua senha está correta? Pode estar vencida?\033[0m"
-	echo -e "\033[1;31mAperte Ctrl + c para sair\033[0m"
-sleep 99999999
-fi
-
+  sudo su - deploy <<EOF
+  unzip /home/deploy/${instancia_add}/izing.zip -d /home/deploy/${instancia_add}
 EOF
 
-  sleep 2
+  sleep
 }
+
+
+#---------------------------------------------------------------------------------------------------------------
+# verificar_senha() {
+#   print_banner
+#   printf "${WHITE} 💻 Verificando usuario e senha...${GRAY_LIGHT}"
+#   printf "\n\n"
+
+#   sleep 2
+
+#   sudo su - root <<EOF
+#   rm teste.txt > /dev/null
+#   wget -q --user ${username_down} --password ${senha_down} https://a.infomeurer.com.br/nova/teste.txt
+  
+# if [ ! -f teste.txt ]; then
+#     echo -e "\033[1;31mSerá que sua senha está correta? Pode estar vencida?\033[0m"
+# 	echo -e "\033[1;31mAperte Ctrl + c para sair\033[0m"
+# sleep 99999999
+# fi
+
+# EOF
+
+#   sleep 2
+# }
 
 #---------------------------------------------------------------------------------------------------------------
 
