@@ -129,15 +129,15 @@ fi
     #   ;;
 
 
-    3)
-      ativar_firewall
-      exit
-      ;;
+    # 3)
+    #   ativar_firewall
+    #   exit
+    #   ;;
 
-    4)
-      desativar_firewall
-      exit
-      ;;
+    # 4)
+    #   desativar_firewall
+    #   exit
+    #   ;;
 
     5)
       erro_qrcode
