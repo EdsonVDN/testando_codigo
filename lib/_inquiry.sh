@@ -35,34 +35,34 @@ get_senha() {
 get_urls() {
   get_frontend_url
   get_backend_url
-  get_usuario
-  get_senha
+  # get_usuario
+  # get_senha
 }
 
-software_update() {
+# software_update() {
   
-  get_usuario
-  get_senha
-  verificar_senha
-  system_pm2_stop
-  system_update_izing
-  frontend_node_dependencies
-  frontend_node_build
-  backend_node_dependencies
-  backend_db_migrate
-  backend_db_seed
-  system_pm2_start
-  script_adicionais
-  system_success2
-}
+#   get_usuario
+#   get_senha
+#   verificar_senha
+#   system_pm2_stop
+#   system_update_izing
+#   frontend_node_dependencies
+#   frontend_node_build
+#   backend_node_dependencies
+#   backend_db_migrate
+#   backend_db_seed
+#   system_pm2_start
+#   script_adicionais
+#   system_success2
+# }
 
-ativar_firewall () {
-  iniciar_firewall
-}
+# ativar_firewall () {
+#   iniciar_firewall
+# }
 
-desativar_firewall () {
-  parar_firewall
-}
+# desativar_firewall () {
+#   parar_firewall
+# }
 
 erro_qrcode () {
   system_pm2_stop
@@ -77,9 +77,9 @@ Erro_global () {
 
 inquiry_options() {
 
-  rm versao.json
-  wget -q -O versao.json https://a.infomeurer.com.br/nova.json
-  print_banner
+  # rm versao.json
+  # wget -q -O versao.json https://a.infomeurer.com.br/nova.json
+  # print_banner
   
 # Verifica se o arquivo package.json existe
 if [ -f "/home/deploy/izing.io/frontend/package.json" ]; then
@@ -123,21 +123,21 @@ fi
     1) get_urls ;;
 
 
-    2) 
-      software_update 
-      exit
-      ;;
+    # 2) 
+    #   software_update 
+    #   exit
+    #   ;;
 
 
-    3) 
-      ativar_firewall 
-      exit
-      ;;
+    # 3) 
+    #   ativar_firewall 
+    #   exit
+    #   ;;
 	  
-    4) 
-      desativar_firewall 
-      exit
-      ;;
+    # 4) 
+    #   desativar_firewall 
+    #   exit
+    #   ;;
 	
     5) 
       erro_qrcode
