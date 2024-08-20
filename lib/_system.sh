@@ -422,11 +422,13 @@ system_nginx_install() {
   sleep 2
 
   sudo su - root <<EOF
+  apt install -y nginx
   rm /etc/nginx/sites-enabled/default
 EOF
 
   sleep 2
 }
+
 
 #######################################
 # install_chrome
